@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DevOps Web App</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(270deg, #00c9ff, #92fe9d, #fbc2eb, #a6c1ee);
+      background-size: 800% 800%;
+      animation: gradientFlow 20s ease infinite;
+      color: #ffffff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      padding: 80px 20px 40px;
+    }
+
+    .line1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      animation: fadeInTop 1.5s ease-out forwards;
+    }
+
+    .line2 {
+      font-size: 1.6rem;
+      margin: 30px auto;
+      height: 2rem;
+      font-weight: 500;
+    }
+
+    .quote {
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: fadeInBottom 2s ease-out 2s forwards;
+    }
+
+    @keyframes fadeInTop {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInBottom {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: white;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 2px solid white;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: white;
+      color: #2c5364;
+      font-weight: 600;
+    }
+
+    .progress-bar {
+      margin: 40px auto 20px;
+      width: 60%;
+      height: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background-color: white;
+      animation: fillProgress 5s ease forwards;
+    }
+
+    @keyframes fillProgress {
+      0% { width: 0%; }
+      33% { width: 33%; }
+      66% { width: 66%; }
+      100% { width: 100%; }
+    }
+
+    .progress-label {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      font-size: 0.9rem;
+      margin-top: 60px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      border-bottom: 1px dashed white;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.4rem;
+      background: white;
+      margin-left: 3px;
+      animation: blink 0.7s steps(1) infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="line1">Hello from DevOps Intern!</div>
+    <div class="line2" id="typeText">Deploying a Web App Using Jenkins on Azure VM<span class="cursor" id="cursor"></span></div>
+    <div class="quote">"Small steps every day lead to big results."</div>
+
+    <a href="http://40.79.241.217:8080" class="btn" target="_blank">View Live Project</a>
+
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+    <div class="progress-label">Building... Deploying... Success</div>
+  </div>
+
+  <footer>
+    Connect with me:
+    <a href="https://www.linkedin.com/in/nithya-sree31?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a> |
+    <a href="https://github.com/your-profile" target="_blank">GitHub</a>
+  </footer>
+
+  <script>
+    const fullText = "Deploying a Web App Using Jenkins on Azure VM";
+    const textElement = document.getElementById("typeText");
+    const cursor = document.getElementById("cursor");
+    let i = 0;
+
+    // Clear existing text (except span)
+    textElement.innerHTML = "<span id='typedText'></span><span class='cursor' id='cursor'></span>";
+    const typedSpan = document.getElementById("typedText");
+
+    const interval = setInterval(() => {
+      if (i < fullText.length) {
+        typedSpan.textContent += fullText.charAt(i);
+        i++;
+      } else {
+        clearInterval(interval);
+        cursor.style.display = "none";
+      }
+    }, 50);
+  </script>
+</body>
+</html>
